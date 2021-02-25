@@ -3,6 +3,9 @@
 require 'nokogiri'
 require 'open-uri'
 require_relative '../lib/tabs'
+require_relative '../lib/website'
+
+
 
 # Choose the artist
 
