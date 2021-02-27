@@ -37,4 +37,15 @@ class Run
     proc_path(input) if page_type == :article
   end
 
+  def link(str_input)
+    input = str_input.clean
+    current_page.links.each do |key, value|
+      article_title = key.clean
+      if input == article_title
+        change_page(value)
+        break
+      end
+    end
+  end
+
 end
