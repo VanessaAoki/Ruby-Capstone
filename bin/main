@@ -2,11 +2,8 @@
 
 require 'nokogiri'
 require 'open-uri'
-# require_relative '../lib/tabs'
-# require_relative '../lib/website'
+require_relative '../lib/run'
 
-document = Nokogiri::HTML(URI.open('https://en.wikipedia.org/wiki/Counter-Strike'))
+run = Run.new
 
-artists = document.css('div.mw-parser-output > p').text
-
-puts artists
+puts run.welcome
