@@ -5,8 +5,8 @@ require 'open-uri'
 # require_relative '../lib/tabs'
 # require_relative '../lib/website'
 
-document = URI.open('https://www.guitartabs.cc/search.php?tabtype=any&band=guns&song=')
+document = Nokogiri::HTML(URI.open('https://www.guitartabs.cc/search.php?tabtype=any&band=guns&song='))
 
-nokogiri_object = Nokogiri::XML(document)
+artists = document.css('td > a')
 
-puts nokogiri_object
+puts artists

@@ -1,39 +1,29 @@
 module Display
   def welcome
-    puts "Welcome! I'm here to help you find your guitar tabs from your favorite artists."
+    puts "Welcome! I'm here to help you find anything you need from wikipedia."
   end
   def artist_name
-    puts "Please enter the artist or band name to start the search"
+    puts "Please enter the terms of your search: "
   end
   def invalid_input
     puts "I'm sorry, that's an invalid input... Please, try again."
   end
-  def artist_options
-    puts "These are the available artists options.
-    Please, type your chosen artist:
+  def page_options
+    puts "These are the available pages on Wikipedia.
+    Please, type your chosen:
     \n"
   end
-  def invalid_artist
-    puts "Oops, looks like we can't find the mentioned artist.
-    Please, try again:
-    \n"
-  end
-  def song_options
-    puts "There are the song tabs for the chosen artist.
-    Please, type the chosen song to display the tab:
-    \n"
-  end
-  def invalid_song
-    puts "Oops, looks like we can't find the requested tab.
+  def invalid_page
+    puts "Oops, looks like we can't find the mentioned page.
     Please, try again:
     \n"
   end
   def again?
     puts "\n
     Great choice, what would you like to do next? 
-    (type a number from 1 - 3)
-    1 - Search for another artist?
-    2 - Search for a song of the same artist?
+    (type the wanted option 1 - 3)
+    1 - Make another research, with other terms.
+    2 - Make another research with the same terms.
     3 - Quit the program.
     \n"
   end
