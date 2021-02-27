@@ -77,7 +77,6 @@ class Run
         
       when 3
         self.active = false
-      end
     end
   end
 end

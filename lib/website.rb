@@ -73,4 +73,5 @@ class Website
       title_hook: ' - Wikipedia'
     }
   }
+  end
 end
