@@ -63,5 +63,15 @@ class Website
       heading = search.css('ul.mw-search-results > li.mw-search-result > div.mw-search-result-heading').text
     end
   end
-  
+
+  Website::TYPES = {
+    search: {
+      prefix: 'https://en.wikipedia.org/w/index.php?search=',
+      title_hook: ' - Search results - Wikipedia',
+    }
+    article: {
+      prefix: 'https://en.wikipedia.org/wiki/'
+      title_hook: ' - Wikipedia'
+    }
+  }
 end
