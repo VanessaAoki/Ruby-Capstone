@@ -29,4 +29,12 @@ class Run
       array
     end
   end
+
+  def input_proc(input)
+    type_of_page = @current_page.page_type if @current_page
+
+    proc_search_terms(input) if page_type.nil?
+    proc_path(input) if page_type == :article
+  end
+
 end
