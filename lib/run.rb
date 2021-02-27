@@ -52,4 +52,9 @@ class Run
     @current_page = Website.new(website)
   end
 
+  def search_page(search_terms)
+    new_website = Website::TYPES[:search][:prefix]
+    new_website += search_terms.join('+')
+    change_page(new_website)
+  end
 end
