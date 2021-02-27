@@ -57,4 +57,27 @@ class Run
     new_website += search_terms.join('+')
     change_page(new_website)
   end
+
+  def search_terms(input)
+    search_page(input.search_term_arr)
+  end
+
+  def article_selection(input)
+    next_link(input)
+  end
+
+  def next?(input)
+    input = input.clean.to_i
+    valid = [1, 2, 3]
+    return unless valid.inlude?(input)
+      case input
+      when 1
+        @current_page = nil
+      when 2
+        
+      when 3
+        self.active = false
+      end
+    end
+  end
 end
