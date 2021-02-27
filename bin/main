@@ -4,6 +4,6 @@ require 'nokogiri'
 require 'open-uri'
 require_relative '../lib/run'
 
-run = Run.new
+# run = Run.new
 
 puts run.welcome
