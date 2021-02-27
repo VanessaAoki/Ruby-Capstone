@@ -49,10 +49,19 @@ class Website
     get_search_content if page_type == :search
   end
 
-  def get_article_text
+  def get_article_content
     article_string = @nokogiri.css('div.mw-parser-output > p').text
     article_array = article_string
     article_array.map! { |string| string.split("\n")}
     article_array.inject {|x, array| x.push("\n").concat(array)}
   end
+
+  def get_search_content
+    @content = []
+    search = @nokogiri.css('ul.mw-search-results')
+    search.each do |results|
+      heading = search.css('ul.mw-search-results > li.mw-search-result > div.mw-search-result-heading').text
+    end
+  end
+  
 end
