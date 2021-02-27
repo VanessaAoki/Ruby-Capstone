@@ -48,4 +48,8 @@ class Run
     end
   end
 
+  def change_page(website)
+    @current_page = Website.new(website)
+  end
+
 end
