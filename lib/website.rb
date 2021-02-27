@@ -50,6 +50,9 @@ class Website
   end
 
   def get_article_text
-    
+    article_string = @nokogiri.css('div.mw-parser-output > p').text
+    article_array = article_string
+    article_array.map! { |string| string.split("\n")}
+    article_array.inject {|x, array| x.push("\n").concat(array)}
   end
 end
