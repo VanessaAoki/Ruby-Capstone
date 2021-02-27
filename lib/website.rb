@@ -19,8 +19,7 @@ class Website
     Website::TYPES.each do |type, hooks|
       prefix = website.include?(hooks[:prefix])
       title = nokogiri.title.include?(hooks[:title_hook])
-      body = nokogiri.to_s.include?(hooks[:body_hook])
-      next unless prefix && title && body
+      next unless prefix && title 
       @page_type = type
     end
   end
