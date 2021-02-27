@@ -2,14 +2,11 @@
 
 require 'nokogiri'
 require 'open-uri'
-require_relative '../lib/tabs'
-require_relative '../lib/website'
+# require_relative '../lib/tabs'
+# require_relative '../lib/website'
 
+document = URI.open('https://www.guitartabs.cc/search.php?tabtype=any&band=guns&song=')
 
+nokogiri_object = Nokogiri::XML(document)
 
-# Choose the artist
-
-# Choose the song
-
-# Select the tab
-
+puts nokogiri_object
