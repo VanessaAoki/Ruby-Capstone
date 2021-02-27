@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'open-uri'
-require_relative '../lib/tabs'
 
 class Website
   attr_reader :nokogiri, :links
