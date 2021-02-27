@@ -27,8 +27,8 @@ class Website
 
   def get_links
     if page_type == :article
-      content.each do |key, arr|
-        arr.each {|element| @links[element.text] = element['href']}
+      content.each do |key, value_arr|
+        value_arr.each {|element| @links[element.text] = element['href']}
       end
     elsif page_type == :search
       content do |x|
