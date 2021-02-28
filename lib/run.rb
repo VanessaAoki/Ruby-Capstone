@@ -60,7 +60,7 @@ class Run
   end
 
   def search_terms(input)
-    search_page(input)
+    search_page(input.search_term_arr)
   end
 
   def article_selection(input)

@@ -8,9 +8,9 @@ run = Run.new
 
 puts run.welcome
 
-# Search terms
 while run.active
   
+# Search terms
   while run.current_page.nil?
     puts run.search_term
     run.input_proc(gets)
