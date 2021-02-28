@@ -10,6 +10,7 @@ puts run.welcome
 
 # Search terms
 while run.active
+  
   while run.current_page.nil?
     puts run.search_term
     run.input_proc(gets)

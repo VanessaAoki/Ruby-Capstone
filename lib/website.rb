@@ -6,13 +6,19 @@ class Website
   attr_accessor :website, :page_type, :content
   def initialize(website)
     @website = siteurl(website)
-    @nokogiri = NokogiriNokogiri::HTML(URI.open(@website))
+    @nokogiri = Nokogiri::HTML(URI.open(@website))
     @page_type = nil
     @content = nil
     @links = {}
     what_page_type
     get_page_content
     get_links
+  end
+
+  def siteurl(address)
+    return address if address.include?('https://')
+  
+    address.gsub('../', 'https://en.wikipedia.org/') if address.start_with?('../')
   end
 
   def what_page_type

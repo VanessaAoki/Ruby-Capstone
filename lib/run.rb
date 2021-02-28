@@ -35,7 +35,7 @@ class Run
     type_of_page = @current_page.page_type if @current_page
 
     search_terms(input) if type_of_page.nil?
-    proc_path(input) if ptype_of_page == :article
+    proc_path(input) if type_of_page == :article
   end
 
   def link(str_input)
@@ -55,7 +55,7 @@ class Run
 
   def search_page(search_terms)
     new_website = Website::TYPES[:search][:prefix]
-    new_website += search_terms.join('+')
+    new_website += search_terms
     change_page(new_website)
   end
 
