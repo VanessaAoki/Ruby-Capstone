@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require_relative '../lib/website'
 require_relative '../lib/display'
+require_relative '../lib/string'
 
 class Run
   include Display
@@ -55,7 +56,7 @@ class Run
 
   def search_page(search_terms)
     new_website = Website::TYPES[:search][:prefix]
-    new_website += search_terms
+    new_website += search_terms.join('+')
     change_page(new_website)
   end
 
