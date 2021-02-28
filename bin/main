@@ -7,3 +7,45 @@ require_relative '../lib/run'
 run = Run.new
 
 puts run.welcome
+
+# Search terms
+while run.active
+  while run.current_page.nil?
+    puts run.search_term
+    run.input_proc(input)
+
+    if run.current_page.content.empty?
+      puts run.invalid_input
+      run.current_page = nil
+    end
+  end
+
+# Articles
+  while run.current_page.page_type == :search
+    puts run.show_content
+    puts run.page_options
+    run.input_proc(input)
+    puts run.invalid_page unless run.current_page.page_type == :article
+  end
+
+  while run.current_page.page_type == :article
+    puts run.show_content
+  end
+  
+  next unless run.current_page.page_type.nil?
+  puts run.invalid_page
+  run.current_page = nil
+
+  puts run.show_content if run.current_page.page_type == :article
+
+  while run.current_page.page_type == :article
+    puts run.invalid_continue
+    input = gets.chomp
+    if %[1 2 3].include?(input.clean)
+      run.input_proc(input)
+    else
+      puts run.invalid_continue
+    end
+    break if run.current_page.nil? || !run.active
+  end   
+end
