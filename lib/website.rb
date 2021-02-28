@@ -66,11 +66,10 @@ class Website
     search: {
       prefix: 'https://en.wikipedia.org/w/index.php?search=',
       title_hook: ' - Search results - Wikipedia',
-    }
+    },
     article: {
-      prefix: 'https://en.wikipedia.org/wiki/'
+      prefix: 'https://en.wikipedia.org/wiki/',
       title_hook: ' - Wikipedia'
     }
-  }
-  end
+  }.freeze
 end

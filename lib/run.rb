@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-# require_relative '../lib/website'
+require_relative '../lib/website'
 require_relative '../lib/display'
 
 class Run
@@ -19,9 +19,10 @@ class Run
     case type
     when :search
       content.map(&:inner_text)
+
     when :article
       array = []
-      content.each do
+      content.each do |key, value|
         array.push("\n")
         value.each { |element| arr.push(element.inner_text)}
         array.push("\n")
@@ -33,8 +34,8 @@ class Run
   def input_proc(input)
     type_of_page = @current_page.page_type if @current_page
 
-    proc_search_terms(input) if page_type.nil?
-    proc_path(input) if page_type == :article
+    search_terms(input) if type_of_page.nil?
+    proc_path(input) if ptype_of_page == :article
   end
 
   def link(str_input)
@@ -59,7 +60,7 @@ class Run
   end
 
   def search_terms(input)
-    search_page(input.search_term_arr)
+    search_page(input)
   end
 
   def article_selection(input)

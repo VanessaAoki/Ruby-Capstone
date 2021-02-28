@@ -12,7 +12,7 @@ puts run.welcome
 while run.active
   while run.current_page.nil?
     puts run.search_term
-    run.input_proc(input)
+    run.input_proc(gets)
 
     if run.current_page.content.empty?
       puts run.invalid_input
