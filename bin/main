@@ -21,22 +21,29 @@ while run.active
     end
   end
 
-# Articles
+# Sections
   while run.current_page.page_type == :search
     puts run.show_content
     puts run.page_options
     run.input_proc(input)
-    puts run.invalid_page unless run.current_page.page_type == :article
+    puts run.invalid_page unless run.current_page.page_type == :section
   end
 
-  while run.current_page.page_type == :article
-    puts run.show_content
+# Articles 
+  puts run.show_content if run.current_page.page_type == :section
+  while run.current_page.page_type == :section
+    puts run.article_selection
+    run.input_proc(gets)
+    if run.current_page.page_type == :section
+      puts run.show_content
+      puts run.invalid_article
+    end
+    next unless run.current_page.page_type.nil?
+    puts run.invalid_page
+    run.current_page = nil
+    break
   end
-  
-  next unless run.current_page.page_type.nil?
-  puts run.invalid_page
-  run.current_page = nil
-  break
+  next if run.current_page.nil?  
 
   puts run.show_content if run.current_page.page_type == :article
 
