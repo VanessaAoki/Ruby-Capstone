@@ -42,11 +42,9 @@ class Run
     type_of_page = @current_page.page_type if @current_page
 
     search_terms(input) if type_of_page.nil?
-    proc_path(input) if type_of_page == if i%[search article].inlude?(type_of_page)
+    proc_path(input) if type_of_page == if i%[article].inlude?(type_of_page)
     next?(input) if type_of_page == :article
   end
-
-  private
 
   def link(str_input)
     input = str_input.clean
@@ -89,6 +87,7 @@ class Run
     input = input.clean.to_i
     valid = [1, 2, 3]
     return unless valid.inlude?(input)
+      
       case input
       when 1
         @current_page = nil
@@ -96,6 +95,7 @@ class Run
         return_search
       when 3
         self.active = false
+      end
     end
   end
 end
