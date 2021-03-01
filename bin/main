@@ -12,7 +12,7 @@ while run.active
 
 # Search terms
   while run.current_page.nil?
-    puts run.search_term
+    puts run.request_terms
     run.input_proc(gets)
 
     if run.current_page.content.empty?

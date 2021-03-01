@@ -42,7 +42,7 @@ class Run
     type_of_page = @current_page.page_type if @current_page
 
     search_terms(input) if type_of_page.nil?
-    proc_path(input) if type_of_page == if i%[article].inlude?(type_of_page)
+    proc_path(input) if type_of_page == if i%[section].include?(type_of_page)
     next?(input) if type_of_page == :article
   end
 
@@ -61,9 +61,9 @@ class Run
     @current_page = Website.new(website)
   end
 
-  def search_page(search_terms)
+  def search_page(search_terms_arr)
     new_website = Website::TYPES[:search][:prefix]
-    new_website += search_terms.join('+')
+    new_website += search_terms_arr.join('+')
     change_page(new_website)
   end
 
@@ -76,7 +76,7 @@ class Run
   end
 
   def search_terms(input)
-    search_page(input.search_term_arr)
+    search_page(input.search_term_array)
   end
 
   def article_selection(input)

@@ -3,7 +3,7 @@ module Display
     puts "Welcome! I'm here to help you find anything you need from wikipedia."
   end
 
-  def search_term
+  def request_terms
     puts "Please enter the terms of your search: 
     \n"
   end
