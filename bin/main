@@ -9,13 +9,13 @@ run = Run.new
 puts run.welcome
 
 while run.active
-  
+
 # Search terms
   while run.current_page.nil?
     puts run.search_term
     run.input_proc(gets)
 
-    if run.current_page.content.empty?
+    if run.current_page.content
       puts run.invalid_input
       run.current_page = nil
     end
@@ -50,3 +50,5 @@ while run.active
     break if run.current_page.nil? || !run.active
   end   
 end
+
+puts run.goodbye
