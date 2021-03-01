@@ -47,6 +47,7 @@ while run.active
 
   puts run.show_content if run.current_page.page_type == :article
 
+# After search
   while run.current_page.page_type == :article
     puts run.invalid_continue
     input = gets.chomp
