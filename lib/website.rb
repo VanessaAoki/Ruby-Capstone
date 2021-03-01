@@ -64,8 +64,12 @@ class Website
     @content = []
     search = @nokogiri.css('ul.mw-search-results')
     search.each do |results|
-      heading = search.css('ul.mw-search-results > li.mw-search-result > div.mw-search-result-heading').text
+      heading = results.css('ul.mw-search-results > li.mw-search-result > div.mw-search-result-heading').inner_text
+      article_results = results if heading.include?('may refer to:')
     end
+    return if search.nil?
+    search_links = article_results.css('p.mw-search-createlink')
+    search_links.each {|e| content.push(e) unless content.length >= 5}
   end
 
   Website::TYPES = {

@@ -21,14 +21,20 @@ class Run
     when :search
       content.map(&:inner_text)
 
-    when :article
+    when :section
       array = []
       content.each do |key, value|
+        array.push("\n")
+        array.push(key)
         array.push("\n")
         value.each { |element| arr.push(element.inner_text)}
         array.push("\n")
       end
       array
+    
+    when :article
+      title = "\n" << current_page.content[:article_title] << "\n"
+      conten[:article_title].unshift(title)
     end
   end
 
@@ -36,8 +42,11 @@ class Run
     type_of_page = @current_page.page_type if @current_page
 
     search_terms(input) if type_of_page.nil?
-    proc_path(input) if type_of_page == :article
+    proc_path(input) if type_of_page == if i%[search article].inlude?(type_of_page)
+    next?(input) if type_of_page == :article
   end
+
+  private
 
   def link(str_input)
     input = str_input.clean
@@ -60,6 +69,14 @@ class Run
     change_page(new_website)
   end
 
+  def return_search
+    return unless current_page.page_type == :article
+
+    search_anchor = current_page.nokogiri.css('ul > li > a')[0]
+    search_address = search_anchor['href'].prepend('https:')
+    change_page(search_address)
+  end
+
   def search_terms(input)
     search_page(input.search_term_arr)
   end
@@ -76,7 +93,7 @@ class Run
       when 1
         @current_page = nil
       when 2
-        
+        return_search
       when 3
         self.active = false
     end
