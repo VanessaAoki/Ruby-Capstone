@@ -16,6 +16,8 @@ class Website
     get_links
   end
 
+  private
+
   def siteurl(address)
     return address if address.include?('https://')
   
@@ -26,13 +28,14 @@ class Website
     Website::TYPES.each do |type, hooks|
       prefix = website.include?(hooks[:prefix])
       title = nokogiri.title.include?(hooks[:title_hook])
-      next unless prefix && title 
+      next unless prefix && title
+
       @page_type = type
     end
   end
 
   def get_links
-    if page_type == :article
+    if page_type == :section
       content.each do |key, value_arr|
         value_arr.each {|element| @links[element.text] = element['href']}
       end
@@ -51,6 +54,7 @@ class Website
 
   def get_page_content
     get_article_content if page_type == :article
+    get_section_content if page_type == :section
     get_search_content if page_type == :search
   end
 
@@ -59,6 +63,20 @@ class Website
     article_array = article_string
     article_array.map! { |string| string.split("\n")}
     article_array.inject {|x, array| x.push("\n").concat(array)}
+  end
+
+  def get_section_content
+    @content = {}
+    current_section = nil
+    nokogiri.css('div.mw-parser-output').each do |e|
+      case e['class']
+      when 'headline'
+        current_headline = e.css('h2 > span.mw-headline').inner_text
+        content[current_headline] = []
+      when 'title'
+        content[current_headline].push(e.css('ul > li > a')[0])
+      end
+    end
   end
 
   def get_search_content
@@ -77,6 +95,10 @@ class Website
     search: {
       prefix: 'https://en.wikipedia.org/w/index.php?search=',
       title_hook: ' - Search results - Wikipedia',
+    },
+    section: {
+      prefix: 'https://en.wikipedia.org/wiki/',
+      title_hook: ' - Wikipedia'
     },
     article: {
       prefix: 'https://en.wikipedia.org/wiki/',
