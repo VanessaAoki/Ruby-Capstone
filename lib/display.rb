@@ -4,21 +4,34 @@ module Display
   end
 
   def search_term
-    puts "Please enter the terms of your search: "
+    puts "Please enter the terms of your search: 
+    \n"
   end
 
   def invalid_input
-    puts "I'm sorry, that's an invalid input... Please, try again."
+    puts "I'm sorry, that's an invalid input... Please, try again.
+    \n"
   end
 
-  def page_options
-    puts "These are the available pages on Wikipedia.
+  def section_options
+    puts "These are the available sections for your search terms: 
+    \n"  
+  end
+
+  def invalid_section
+    puts "Oops, looks like we can't find the mentioned section.
+    Please, try again:
+    \n"
+  end
+
+  def article_options
+    puts "These are the available articles on Wikipedia.
     Please, type your chosen:
     \n"
   end
 
-  def invalid_page
-    puts "Oops, looks like we can't find the mentioned page.
+  def invalid_article
+    puts "Oops, looks like we can't find the mentioned article.
     Please, try again:
     \n"
   end
@@ -35,7 +48,8 @@ module Display
 
   def invalid_continue
     puts "That's not a valid input, please try again.
-    Select your options by typing 1, 2 or 3."
+    Select your options by typing 1, 2 or 3.
+    \n"
   end
   
   def goodbye
