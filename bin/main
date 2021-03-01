@@ -15,7 +15,7 @@ while run.active
     puts run.search_term
     run.input_proc(gets)
 
-    if run.current_page.content
+    if run.current_page.content.empty?
       puts run.invalid_input
       run.current_page = nil
     end
@@ -36,6 +36,7 @@ while run.active
   next unless run.current_page.page_type.nil?
   puts run.invalid_page
   run.current_page = nil
+  break
 
   puts run.show_content if run.current_page.page_type == :article
 
