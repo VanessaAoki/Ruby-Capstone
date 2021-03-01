@@ -4,7 +4,7 @@ module Display
   end
 
   def request_terms
-    puts "Please enter the terms of your search: 
+    puts "Please enter the terms of your search:
     \n"
   end
 
@@ -14,8 +14,8 @@ module Display
   end
 
   def section_options
-    puts "These are the available sections for your search terms: 
-    \n"  
+    puts "These are the available sections for your search terms:
+    \n"
   end
 
   def invalid_section
@@ -38,7 +38,7 @@ module Display
 
   def again?
     puts "\n
-    Great choice, what would you like to do next? 
+    Great choice, what would you like to do next?
     (type the wanted option 1 - 3)
     1 - Make another research, with other terms.
     2 - Make another research with the same terms.
@@ -51,8 +51,8 @@ module Display
     Select your options by typing 1, 2 or 3.
     \n"
   end
-  
+
   def goodbye
-    puts "Thanks for using the program! Hope to see you again."
+    puts 'Thanks for using the program! Hope to see you again.'
   end
 end

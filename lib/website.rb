@@ -5,6 +5,7 @@ require 'open-uri'
 class Website
   attr_reader :nokogiri, :links
   attr_accessor :website, :page_type, :content
+
   def initialize(website)
     @website = siteurl(website)
     @nokogiri = Nokogiri::HTML(URI.open(@website))
@@ -20,7 +21,7 @@ class Website
 
   def siteurl(address)
     return address if address.include?('https://')
-  
+
     address.gsub('../', 'https://en.wikipedia.org/') if address.start_with?('../')
   end
 
@@ -35,11 +36,12 @@ class Website
   end
 
   def get_links
-    if page_type == :section
-      content.each do |key, value_arr|
-        value_arr.each {|element| @links[element.text] = element['href']}
+    case page_type
+    when :section
+      content.each do |_key, value_arr|
+        value_arr.each { |element| @links[element.text] = element['href'] }
       end
-    elsif page_type == :search
+    when :search
       content do |x|
         @links[x.text] = e['href'] unless links.lenght >= 5
       end
@@ -61,8 +63,8 @@ class Website
   def get_article_content
     article_string = @nokogiri.css('div.mw-parser-output > p').text
     article_array = article_string
-    article_array.map! { |string| string.split("\n")}
-    article_array.inject {|x, array| x.push("\n").concat(array)}
+    article_array.map! { |string| string.split("\n") }
+    article_array.inject { |x, array| x.push("\n").concat(array) }
   end
 
   def get_section_content
@@ -87,14 +89,15 @@ class Website
       article_results = results if heading.include?('may refer to:')
     end
     return if search.nil?
+
     search_links = article_results.css('p.mw-search-createlink')
-    search_links.each {|e| content.push(e) unless content.length >= 5}
+    search_links.each { |e| content.push(e) unless content.length >= 5 }
   end
 
   Website::TYPES = {
     search: {
       prefix: 'https://en.wikipedia.org/w/index.php?search=',
-      title_hook: ' - Search results - Wikipedia',
+      title_hook: ' - Search results - Wikipedia'
     },
     section: {
       prefix: 'https://en.wikipedia.org/wiki/',

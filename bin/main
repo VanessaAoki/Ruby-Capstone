@@ -10,7 +10,7 @@ puts run.welcome
 
 while run.active
 
-# Search terms
+  # Search terms
   while run.current_page.nil?
     puts run.request_terms
     run.input_proc(gets)
@@ -21,7 +21,7 @@ while run.active
     end
   end
 
-# Sections
+  # Sections
   while run.current_page.page_type == :search
     puts run.show_content
     puts run.page_options
@@ -29,7 +29,7 @@ while run.active
     puts run.invalid_page unless run.current_page.page_type == :section
   end
 
-# Articles 
+  # Articles
   puts run.show_content if run.current_page.page_type == :section
   while run.current_page.page_type == :section
     puts run.article_selection
@@ -39,25 +39,26 @@ while run.active
       puts run.invalid_article
     end
     next unless run.current_page.page_type.nil?
+
     puts run.invalid_page
     run.current_page = nil
     break
   end
-  next if run.current_page.nil?  
+  next if run.current_page.nil?
 
   puts run.show_content if run.current_page.page_type == :article
 
-# After search
+  # After search
   while run.current_page.page_type == :article
     puts run.invalid_continue
     input = gets.chomp
-    if %[1 2 3].include?(input.clean)
+    if %(1 2 3).include?(input.clean)
       run.input_proc(input)
     else
       puts run.invalid_continue
     end
     break if run.current_page.nil? || !run.active
-  end   
+  end
 end
 
 puts run.goodbye
