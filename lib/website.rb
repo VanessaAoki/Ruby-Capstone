@@ -13,8 +13,8 @@ class Website
     @content = nil
     @links = {}
     what_page_type
-    get_page_content
-    get_links
+    fetch_page_content
+    fetch_links
   end
 
   private
@@ -35,7 +35,7 @@ class Website
     end
   end
 
-  def get_links
+  def fetch_links
     case page_type
     when :section
       content.each do |_key, value_arr|
@@ -48,26 +48,26 @@ class Website
     end
   end
 
-  def get_article
+  def fetch_article
     @content = {}
-    @content[:article_title] = get_article_title
-    @content[:article_text] = get_article_text
+    @content[:article_title] = fetch_article_title
+    @content[:article_text] = fetch_article_text
   end
 
-  def get_page_content
-    get_article_content if page_type == :article
-    get_section_content if page_type == :section
-    get_search_content if page_type == :search
+  def fetch_page_content
+    fetch_article_content if page_type == :article
+    fetch_section_content if page_type == :section
+    fetch_search_content if page_type == :search
   end
 
-  def get_article_content
+  def fetch_article_content
     article_string = @nokogiri.css('div.mw-parser-output > p').text
     article_array = article_string
     article_array.map! { |string| string.split("\n") }
     article_array.inject { |x, array| x.push("\n").concat(array) }
   end
 
-  def get_section_content
+  def fetch_section_content
     @content = {}
     current_section = nil
     nokogiri.css('div.mw-parser-output').each do |e|
@@ -81,7 +81,7 @@ class Website
     end
   end
 
-  def get_search_content
+  def fetch_search_content
     @content = []
     search = @nokogiri.css('ul.mw-search-results')
     search.each do |results|
