@@ -13,7 +13,8 @@ while run.active
   # Search terms
   while run.current_page.nil?
     puts run.request_terms
-    run.input_proc(gets)
+    input = gets.chomp
+    run.input_proc(input)
 
     if run.current_page.content.empty?
       puts run.invalid_input

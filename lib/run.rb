@@ -39,9 +39,9 @@ class Run
 
   def input_proc(input)
     type_of_page = @current_page.page_type if @current_page
-
+    
     search_terms(input) if type_of_page.nil?
-    proc_path(input) if type_of_page == if i % [section].include?(type_of_page)
+    proc_path(input) if type_of_page == if %i[search section].include?(type_of_page)
     what_next?(input) if type_of_page == :article
   end
 
