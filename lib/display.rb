@@ -12,6 +12,19 @@ class Display
     Please, try again:\n"
   end
 
+  def select_main
+    puts "Please select one of the following options:
+    1 - Today's featured article;
+    2 - In the news;
+    3 - Did you know...;
+    4 - On this day."
+  end
+
+  def invalid_main
+    puts "That's not a valid input, please try again.
+    Select your options by typing 1, 2, 3 or 4.\n"
+  end
+  
   def again?
     puts "\n
     Great choice, what would you like to do next?
