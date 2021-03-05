@@ -4,25 +4,33 @@ require 'nokogiri'
 require 'open-uri'
 require 'watir'
 require 'webdrivers'
+require_relative './lib/display'
 
-def fetch_terms
-  puts "That's an invalid output, try again." while input.empty?
-  input.each do |term|
-    if term == input.last
-      website += term
-    else
-      website = "#{website}#{term}+"
-    end
+display = Display.new
+
+puts 'Type the terms of your search: '
+input = gets.chomp.split(' ')
+@website = 'https://en.wikipedia.org/wiki/'
+
+input.each do |term|
+  if term == input.last
+    @website += term
+  else
+    @website = "#{@website}#{term}_"
   end
 end
 
-browser = Watir::Browser.new
-browser.goto(website)
-nokogiri = Nokogiri::HTML.parse(browser.html)
+def browser_new
+  @browser = Watir::Browser.new
+  @browser.goto(@website)
+  @nokogiri = Nokogiri::HTML.parse(@browser.html)
+end
 
-title = nokogiri.css('h1#firstHeading').text
-content = nokogiri.css('div.mw-parser-output > p').text
+browser_new
 
-browser.quit
+p1 =  @nokogiri.xpath("//div//p[position()=2]").text
+p2 =  @nokogiri.xpath("//div//p[position()=3]").text
 
-puts title, content
+@browser.quit
+
+puts p1, p2

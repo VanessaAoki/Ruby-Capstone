@@ -9,16 +9,14 @@ require_relative './lib/display'
 display = Display.new
 
 puts 'Type the terms of your search: '
-input = gets.chomp.capitalize!.split(' ')
+input = gets.chomp.split(' ')
 @website = 'https://en.wikipedia.org/wiki/'
-
-display.invalid_article while input.empty?
 
 input.each do |term|
   if term == input.last
     @website += term
   else
-    @website = "#{@website}#{term}+"
+    @website = "#{@website}#{term}_"
   end
 end
 
@@ -30,9 +28,9 @@ end
 
 browser_new
 
-title = @nokogiri.css('h1#firstHeading').text
-content = @nokogiri.css('div.mw-parser-output > p').text
+p1 =  @nokogiri.xpath("//div//p[position()=2]").text
+p2 =  @nokogiri.xpath("//div//p[position()=3]").text
 
 @browser.quit
 
-puts title, content
+puts p1, p2
