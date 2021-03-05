@@ -1,65 +1,10 @@
 #!/usr/bin/env ruby
 
-require 'nokogiri'
-require 'open-uri'
-require_relative '../lib/run'
+require_relative '../lib/display'
+# require_relative '../lib/run'
+# require_relative '../lib/website'
 
-run = Run.new
+display = Display.new
+display.welcome
 
-puts run.welcome
-
-while run.active
-
-  # Search terms
-  while run.current_page.nil?
-    puts run.request_terms
-    input = gets.chomp
-    run.input_proc(input)
-
-    if run.current_page.content.empty?
-      puts run.invalid_input
-      run.current_page = nil
-    end
-  end
-
-  # Sections
-  while run.current_page.page_type == :search
-    puts run.show_content
-    puts run.page_options
-    run.input_proc(input)
-    puts run.invalid_page unless run.current_page.page_type == :section
-  end
-
-  # Articles
-  puts run.show_content if run.current_page.page_type == :section
-  while run.current_page.page_type == :section
-    puts run.article_selection
-    run.input_proc(gets)
-    if run.current_page.page_type == :section
-      puts run.show_content
-      puts run.invalid_article
-    end
-    next unless run.current_page.page_type.nil?
-
-    puts run.invalid_page
-    run.current_page = nil
-    break
-  end
-  next if run.current_page.nil?
-
-  puts run.show_content if run.current_page.page_type == :article
-
-  # After search
-  while run.current_page.page_type == :article
-    puts run.invalid_continue
-    input = gets.chomp
-    if %(1 2 3).include?(input.clean)
-      run.input_proc(input)
-    else
-      puts run.invalid_continue
-    end
-    break if run.current_page.nil? || !run.active
-  end
-end
-
-puts run.goodbye
+input = gets.chomp
