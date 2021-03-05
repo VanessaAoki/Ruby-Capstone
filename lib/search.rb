@@ -12,7 +12,6 @@ puts 'Type the terms of your search: '
 @input = gets.chomp.split(' ')
 @website = 'https://en.wikipedia.org/wiki/'
 
-
 def search_web(input)
   input.each do |term|
     if term == input.last
@@ -29,12 +28,12 @@ def browser_new
   @nokogiri = Nokogiri::HTML.parse(@browser.html)
 end
 
-
 def print_first
   p1 = @nokogiri.xpath("//div//p[position()=2]").text
   p2 = @nokogiri.xpath("//div//p[position()=3]").text
   puts p1, p2
 end
+
 def keep_printing
   @display.continue_article
   input = gets.chomp.capitalize!
