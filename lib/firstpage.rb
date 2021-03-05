@@ -26,19 +26,19 @@ def fetch_first(input)
   when '1'
     title = @nokogiri.css('h2#mp-tfa-h2 > span.mw-headline').text
     content = @nokogiri.css('div#mp-tfa > p').text
-    puts title, content
+    puts title, "\n", content
   when '2'
     title = @nokogiri.css('h2#mp-itn-h2 > span.mw-headline').text
     content = @nokogiri.css('div#mp-itn > ul').text
-    puts title, content
+    puts title, "\n", content
   when '3'
     title = @nokogiri.css('h2#mp-dyk-h2 > span.mw-headline').text
     content = @nokogiri.css('div#mp-dyk > ul').text
-    puts title, content
+    puts title, "\n", content
   when '4'
     title = @nokogiri.css('h2#mp-otd-h2 > span.mw-headline').text
     content = @nokogiri.css('div#mp-otd > p').text
-    puts title, content
+    puts title, "\n", content
   else
     @display.invalid_main
   end
