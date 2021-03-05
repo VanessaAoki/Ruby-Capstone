@@ -7,4 +7,4 @@ require_relative '../lib/display'
 display = Display.new
 display.welcome
 
-input = gets.chomp
+input = gets.chomp.capitalize!.split(' ')

@@ -5,18 +5,18 @@ require 'open-uri'
 require 'watir'
 require 'webdrivers'
 
-
-while input.empty?
-  puts "That's an invalid output, try again."
-end
-input.each do |term|
-  if term != input.last
-    website = website + term + '+'
-  else
-    website += term
+def fetch_terms
+  while input.empty?
+    puts "That's an invalid output, try again."
+  end
+  input.each do |term|
+    if term != input.last
+      website = website + term + '+'
+    else
+      website += term
+    end
   end
 end
-
 
 browser = Watir::Browser.new
 browser.goto(website)
