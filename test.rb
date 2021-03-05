@@ -41,6 +41,7 @@ def keep_printing
   if input == 'Y'
     px = @nokogiri.xpath("//div//p[position()=4]").text
     puts px
+    keep_printing
   elsif input == 'N'
     @display.again
   else

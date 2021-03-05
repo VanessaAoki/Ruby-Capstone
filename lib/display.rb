@@ -13,7 +13,7 @@ Please, try again:\n"
   end
 
   def continue_article
-    puts "\n\nDo you want to keep reading?\n"
+    puts "\nDo you want to keep reading?\n"
   end
 
   def invalid_continue
@@ -34,8 +34,7 @@ Select your options by typing 1, 2, 3 or 4.\n"
   end
 
   def again
-    puts "\n
-    What would you like to do next?
+    puts "\nWhat would you like to do next?
 (type the wanted option 1 - 3)
 1 - Make another research, with other terms.
 2 - Make another research with the same terms.
