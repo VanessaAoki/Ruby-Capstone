@@ -36,8 +36,8 @@ Select your options by typing 1, 2, 3 or 4.\n"
   def again
     puts "\nWhat would you like to do next?
 (type the wanted option 1 - 3)
-1 - Make another research, with other terms.
-2 - Make another research with the same terms.
+1 - Make another search.
+2 - Go to Wikipedia's main page.
 3 - Quit the program.\n"
   end
 
