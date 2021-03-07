@@ -12,7 +12,6 @@ class Search
     input = nil
     @website = 'https://en.wikipedia.org/wiki/'
     fetch_terms(input)
-    search_web(input)
     browser_new
     print_first
     keep_printing(input)
@@ -22,10 +21,11 @@ class Search
   def fetch_terms(input)
     @display.request_terms
     @input = gets.chomp.split
-    if @input.empty? do
-         @display.invalid_terms
-         fetch_terms(input)
-       end
+    if @input.empty?
+      @display.invalid_terms
+      fetch_terms(input)
+    else
+      search_web(input)
     end
   end
 
@@ -54,7 +54,7 @@ class Search
   def keep_printing(input)
     @display.continue_article
     @input = gets.chomp.capitalize!
-    case input
+    case @input
     when 'Y'
       px = @nokogiri.css('div.mw-parser-output > p').text
       puts px
@@ -70,7 +70,7 @@ class Search
   def fetch_next(input)
     @display.fetch_again
     @input = gets.chomp
-    case input
+    case @input
     when '1'
       new_search
     when '2'

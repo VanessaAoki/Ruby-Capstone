@@ -8,8 +8,7 @@ class Display
   end
 
   def invalid_terms
-    puts "Oops, looks like you didn't type anything
-Please, try again:\n"
+    puts "Oops, looks like you didn't type anything. Try again!\n"
   end
 
   def continue_article
