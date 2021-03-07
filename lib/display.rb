@@ -13,7 +13,7 @@ Please, try again:\n"
   end
 
   def continue_article
-    puts "\nDo you want to keep reading?\n"
+    puts "\nDo you want to keep reading? [Y]es or [N]o\n"
   end
 
   def invalid_continue
