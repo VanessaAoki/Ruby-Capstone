@@ -5,6 +5,7 @@ require 'open-uri'
 require 'watir'
 require 'webdrivers'
 require_relative './lib/display'
+require_relative './lib/firstpage'
 
 class Search
   def new_search

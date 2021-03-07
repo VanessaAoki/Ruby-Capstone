@@ -5,10 +5,12 @@ require 'open-uri'
 require 'watir'
 require 'webdrivers'
 require_relative './lib/display'
+require_relative './lib/firstpage'
 
 class Search
   def new_search
     @display = Display.new
+    @first = Firstpage.new
     @website = 'https://en.wikipedia.org/wiki/'
     fetch_terms(@input)
     search_web(@input)
@@ -70,7 +72,7 @@ class Search
     if input == '1'
       new_search
     elsif input == '2'
-      
+      @first.new_firstpage
     elsif input == '3'
       @display.goodbye
     else
