@@ -4,18 +4,20 @@ require 'nokogiri'
 require 'open-uri'
 require 'watir'
 require 'webdrivers'
-require_relative './lib/display'
-require_relative './lib/firstpage'
+require_relative '../lib/display'
+require_relative '../lib/firstpage'
 
 class Search
   def new_search
     @display = Display.new
+    @first = Firstpage.new
+    input = nil
     @website = 'https://en.wikipedia.org/wiki/'
-    fetch_terms(@input)
-    search_web(@input)
+    fetch_terms(input)
+    search_web(input)
     browser_new
     print_first
-    keep_printing(@input)
+    keep_printing(input)
     @browser.quit
   end
 
@@ -71,7 +73,7 @@ class Search
     if input == '1'
       new_search
     elsif input == '2'
-      
+      @first.new_firstpage
     elsif input == '3'
       @display.goodbye
     else

@@ -5,6 +5,7 @@ require 'open-uri'
 require 'watir'
 require 'webdrivers'
 require_relative '../lib/display'
+require_relative '../lib/search'
 
 class Firstpage
   def new_firstpage
@@ -14,8 +15,8 @@ class Firstpage
     @display.select_main
     @input = gets.chomp
     browser_new
-    fetch_first(input)
-    @search.fetch_next(input)
+    fetch_first(@input)
+    @search.fetch_next(@input)
     @browser.quit
   end
 

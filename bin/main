@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/display'
-require_relative '../test'
-# require_relative '../lib/website'
+require_relative '../lib/firstpage'
+require_relative '../lib/search'
+
 
 search = Search.new
 search.new_search
