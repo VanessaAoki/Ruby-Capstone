@@ -22,9 +22,10 @@ class Search
   def fetch_terms(input)
     @display.request_terms
     @input = gets.chomp.split
-    if @input.empty?
-      @display.invalid_terms
-      fetch_terms(input)
+    if @input.empty? do
+         @display.invalid_terms
+         fetch_terms(input)
+       end
     end
   end
 
