@@ -3,6 +3,5 @@
 require_relative '../lib/display'
 require_relative '../lib/search'
 
-
 search = Search.new
 search.new_search
