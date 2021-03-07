@@ -21,6 +21,10 @@ class Search
   def fetch_terms(input)
     @display.request_terms
     @input = gets.chomp.split(' ')
+    if @input.empty?
+      @display.invalid_terms
+      fetch_terms(input)
+    end
   end
   
   def search_web(input)
@@ -49,11 +53,10 @@ class Search
     @display.continue_article
     input = gets.chomp.capitalize!
     if input == 'Y'
-      px = @nokogiri.xpath("//div//p[position()=4]").text
+      px = @nokogiri.css('div.mw-parser-output > p').text
       puts px
-      keep_printing(input)
+      fetch_next(input)
     elsif input == 'N'
-      @display.again
       fetch_next(input)
     else
       @display.invalid_continue
@@ -62,6 +65,7 @@ class Search
   end
   
   def fetch_next(input)
+    @display.again
     input = gets.chomp
     if input == '1'
       new_search
@@ -75,6 +79,3 @@ class Search
     end
   end
 end
-
-search = Search.new
-search.new_search

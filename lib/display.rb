@@ -7,13 +7,13 @@ class Display
     puts "Please enter the terms of your search:\n"
   end
 
-  def invalid_article
-    puts "Oops, looks like we can't find the mentioned article.
+  def invalid_terms
+    puts "Oops, looks like you didn't type anything
 Please, try again:\n"
   end
 
   def continue_article
-    puts "\nDo you want to keep reading? [Y]es or [N]o\n"
+    puts "\nDo you want to read the whole article? [Y]es or [N]o\n"
   end
 
   def invalid_continue
