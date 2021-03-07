@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/display'
-# require_relative '../lib/run'
+require_relative '../test'
 # require_relative '../lib/website'
 
-display = Display.new
-display.welcome
-
-input = gets.chomp.capitalize!.split(' ')
+search = Search.new
+search.new_search
