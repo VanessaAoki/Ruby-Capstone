@@ -5,12 +5,10 @@ require 'open-uri'
 require 'watir'
 require 'webdrivers'
 require_relative '../lib/display'
-require_relative '../lib/firstpage'
 
 class Search
   def new_search
     @display = Display.new
-    @first = Firstpage.new
     input = nil
     @website = 'https://en.wikipedia.org/wiki/'
     fetch_terms(input)
@@ -68,13 +66,11 @@ class Search
   end
   
   def fetch_next(input)
-    @display.again
+    @display.fetch_again
     input = gets.chomp
     if input == '1'
       new_search
     elsif input == '2'
-      @first.new_firstpage
-    elsif input == '3'
       @display.goodbye
     else
       @display.invalid_again

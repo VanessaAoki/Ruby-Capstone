@@ -33,12 +33,11 @@ Please, try again:\n"
 Select your options by typing 1, 2, 3 or 4.\n"
   end
 
-  def again
+  def fetch_again
     puts "\nWhat would you like to do next?
-(type the wanted option 1 - 3)
+(type the wanted option 1 or 2)
 1 - Make another search.
-2 - Go to Wikipedia's main page.
-3 - Quit the program.\n"
+2 - Quit the program.\n"
   end
 
   def invalid_again
