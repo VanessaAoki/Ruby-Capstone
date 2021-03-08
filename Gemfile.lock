@@ -1,12 +1,20 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ast (2.4.2)
     childprocess (3.0.0)
     diff-lcs (1.4.4)
     mini_portile2 (2.4.0)
+    nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.10.10-x64-mingw32)
       mini_portile2 (~> 2.4.0)
+    parallel (1.20.1)
+    parser (3.0.0.0)
+      ast (~> 2.4.1)
+    rainbow (3.0.0)
     regexp_parser (1.8.0)
+    rexml (3.2.4)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -31,10 +39,12 @@ GEM
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (1.2.0)
       parser (>= 2.7.1.5)
+    ruby-progressbar (1.11.0)
     rubyzip (2.3.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    unicode-display_width (1.7.0)
     watir (6.17.0)
       regexp_parser (~> 1.2)
       selenium-webdriver (~> 3.6)
@@ -44,13 +54,15 @@ GEM
       selenium-webdriver (>= 3.0, < 4.0)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
   nokogiri
   rspec
+  rubocop
   watir
   webdrivers
 
 BUNDLED WITH
-   1.17.2
+   2.1.4
