@@ -4,7 +4,6 @@ require 'nokogiri'
 require 'open-uri'
 require 'watir'
 require 'webdrivers'
-require_relative '../lib/display'
 
 class Search
   def new_search
@@ -19,10 +18,10 @@ class Search
   end
 
   def fetch_terms(input)
-    puts @display.request_terms
+    @display.request_terms
     @input = gets.chomp.split
     if @input.empty?
-      puts @display.invalid_terms
+      @display.invalid_terms
       fetch_terms(input)
     else
       search_web(input)
@@ -52,31 +51,31 @@ class Search
   end
 
   def keep_printing(input)
-    puts @display.continue_article
+    @display.continue_article
     @input = gets.chomp.capitalize
     case @input
     when 'Y'
       px = @nokogiri.css('div.mw-parser-output > p').text
-      puts px
+      px
       fetch_next(input)
     when 'N'
       fetch_next(input)
     else
-      puts @display.invalid_continue
+      @display.invalid_continue
       keep_printing(input)
     end
   end
 
   def fetch_next(input)
-    puts @display.fetch_again
+    @display.fetch_again
     @input = gets.chomp
     case @input
     when '1'
       new_search
     when '2'
-      puts @display.goodbye
+      @display.goodbye
     else
-      puts @display.invalid_again
+      @display.invalid_again
       fetch_next(input)
     end
   end
