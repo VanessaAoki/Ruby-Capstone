@@ -19,10 +19,10 @@ class Search
   end
 
   def fetch_terms(input)
-    @display.request_terms
+    puts @display.request_terms
     @input = gets.chomp.split
     if @input.empty?
-      @display.invalid_terms
+      puts @display.invalid_terms
       fetch_terms(input)
     else
       search_web(input)
@@ -52,7 +52,7 @@ class Search
   end
 
   def keep_printing(input)
-    @display.continue_article
+    puts @display.continue_article
     @input = gets.chomp.capitalize!
     case @input
     when 'Y'
@@ -62,21 +62,21 @@ class Search
     when 'N'
       fetch_next(input)
     else
-      @display.invalid_continue
+      puts @display.invalid_continue
       keep_printing(input)
     end
   end
 
   def fetch_next(input)
-    @display.fetch_again
+    puts @display.fetch_again
     @input = gets.chomp
     case @input
     when '1'
       new_search
     when '2'
-      @display.goodbye
+      puts @display.goodbye
     else
-      @display.invalid_again
+      puts @display.invalid_again
       fetch_next(input)
     end
   end
