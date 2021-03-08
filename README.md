@@ -6,8 +6,8 @@ This is my solo capstone project for the Microverse's Ruby module.
 
 This is a web-scrapper created to help you to get articles from [Wikipedia](https://en.wikipedia.org/wiki/Main_Page).
 
-[screenshot](./images/screenshot.png)
-[example](./images/example.png)
+![screenshot](/images/screenshot.png)
+![example](/images/example.png)
 
 
 ## Getting Started
