@@ -53,7 +53,7 @@ class Search
 
   def keep_printing(input)
     puts @display.continue_article
-    @input = gets.chomp.capitalize!
+    @input = gets.chomp.capitalize
     case @input
     when 'Y'
       px = @nokogiri.css('div.mw-parser-output > p').text

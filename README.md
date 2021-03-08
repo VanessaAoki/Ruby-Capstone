@@ -6,7 +6,8 @@ This is my solo capstone project for the Microverse's Ruby module.
 
 This is a web-scrapper created to help you to get articles from [Wikipedia](https://en.wikipedia.org/wiki/Main_Page).
 
-[screenshot](./images/screenshot.png)
+[screenshot](../images/screenshot.png)
+[example](../images/example.png)
 
 
 ## Getting Started
@@ -23,15 +24,17 @@ https://github.com/VanessaAoki/Ruby-Capstone.git
 ```
 2. Type  `$ cd bin` to move to the bin folder;
 
-3. Execute the file by using `$ ruby main` on the terminal;
+3. Install all required gems by typing `$ bundle install` on the terminal;
 
-4. Type the terms of your search and go through the millions of articles available on Wikipedia!
+4. Execute the file by using `$ ruby main` on the terminal;
+
+5. Type the terms of your search and go through the millions of articles available on Wikipedia!
 
 
 ## Built With
 
 - Ruby
-- Ruby gems: nokogiri, open-uri, watir and webdrivers
+- Ruby gems: nokogiri, open-uri, rubocop, watir and webdrivers
 - Visual Studio, Git & GitHub
 
 

@@ -23,7 +23,7 @@ class Display
 
   def invalid_continue
     [
-    "That's not a valid input, please select [Y]es or [N]o."
+    "That's not a valid input, please select [y]es or [n]o."
     ]
   end
 
