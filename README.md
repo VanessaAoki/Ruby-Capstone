@@ -14,7 +14,7 @@ This is a web-scrapper created to help you to get articles from [Wikipedia](http
 
 ### Prerequisites
 To run this project, you need a computer with Ruby installed.
-> If you are uncertain on how to install Ruby, check out this [tutorial](https://www.theodinproject.com/courses/ruby-programming/lessons/installing-ruby-ruby-programming) made by [The Odin Project](https://www.theodinproject.com/about).
+> If you are uncertain about how to install Ruby, check out this [tutorial](https://www.theodinproject.com/courses/ruby-programming/lessons/installing-ruby-ruby-programming) made by [The Odin Project](https://www.theodinproject.com/about).
 
 ### Setup
 
@@ -22,7 +22,7 @@ To run this project, you need a computer with Ruby installed.
 ```
 https://github.com/VanessaAoki/Ruby-Capstone.git
 ```
-2. Type  `$ cd bin` to move to the bin folder;
+2. Type  `$ cd bin` to move to the bin folder, *you must be on this folder to execute the file*;
 
 3. Install all required gems by typing `$ bundle install` on the terminal;
 
@@ -56,7 +56,7 @@ Feel free to check the [issues page](https://github.com/VanessaAoki/Ruby-Capston
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+Give an ⭐️ if you like this project!
 
 
 ## 📝 License
