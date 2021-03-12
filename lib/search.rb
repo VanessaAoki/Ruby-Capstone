@@ -8,11 +8,12 @@ require 'webdrivers'
 class Search
   attr_reader :website
   attr_accessor :title
+
   def initialize(input, var)
     @input = input
     @website = 'https://en.wikipedia.org/wiki/'
     @var = var
-        
+
     @input.each do |term|
       if term == @input.last
         @website += term
