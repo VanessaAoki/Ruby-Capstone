@@ -7,6 +7,7 @@ require 'webdrivers'
 require_relative '../lib/test'
 require_relative '../lib/display'
 
+# Gets the input and if it's empty, asks for the input again
 def fetch_terms(input)
   puts @display.request_terms
   @input = gets.chomp.split
@@ -16,12 +17,13 @@ def fetch_terms(input)
   end
 end
 
+# Asks if wants to print the article, if yes, print article, if no, gives other options
 def keep_printing(input)
   puts @display.continue_article
   @input = gets.chomp.capitalize
   case @input
   when 'Y'
-    px = @nokogiri.css('div.mw-parser-output > p').text
+    puts @search.browser_new
     fetch_next(input)
   when 'N'
     fetch_next(input)
@@ -31,6 +33,7 @@ def keep_printing(input)
   end
 end
 
+# Asks if wants to keep doing more researches or quit the program
 def fetch_next(input)
   puts @display.fetch_again
   @input = gets.chomp
@@ -45,11 +48,12 @@ def fetch_next(input)
   end
 end
 
+# Run all the methods
 def run_main
   @display = Display.new
   fetch_terms(@input)
-  @search = Search.new(@input)
-  @search.browser_new
+  @var = 'div.mw-parser-output > p'
+  @search = Search.new(@input, @var)
   keep_printing(@input)
 end
 

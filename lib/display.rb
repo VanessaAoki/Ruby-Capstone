@@ -34,7 +34,7 @@ class Display
 "\nWhat would you like to do next?
 (type the wanted option 1 or 2)
 1 - Make another search.
-2 - Quit the program.\n"
+2 - Quit the program. \n"
     ]
   end
 
@@ -47,7 +47,7 @@ Select your options by typing 1 or 2.\n"
 
   def goodbye
     [
-'Thanks for using the program! Hope to see you again.'
+"\nThanks for using the program! Hope to see you again."
     ]
   end
 end

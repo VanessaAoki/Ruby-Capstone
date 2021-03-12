@@ -8,10 +8,11 @@ require 'webdrivers'
 class Search
   attr_reader :website
   attr_accessor :title
-  def initialize(input)
+  def initialize(input, var)
     @input = input
     @website = 'https://en.wikipedia.org/wiki/'
-    
+    @var = var
+        
     @input.each do |term|
       if term == @input.last
         @website += term
@@ -25,8 +26,6 @@ class Search
     @browser = Watir::Browser.new
     @browser.goto(@website)
     @nokogiri = Nokogiri::HTML.parse(@browser.html)
-    px = @nokogiri.css('div.mw-parser-output > p').text
-    @title = @nokogiri.css('h1#firstHeading').text
-    puts @title
+    @px = @nokogiri.css(@var).text
   end
 end
