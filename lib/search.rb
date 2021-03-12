@@ -7,7 +7,6 @@ require 'webdrivers'
 
 class Search
   def new_search
-    @display = Display.new
     input = nil
     @website = 'https://en.wikipedia.org/wiki/'
     fetch_terms(input)

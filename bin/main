@@ -1,44 +1,56 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/search'
+require 'nokogiri'
+require 'open-uri'
+require 'watir'
+require 'webdrivers'
+require_relative '../lib/test'
+require_relative '../lib/display'
 
-class Display
-  def welcome
-    puts "Welcome! I'm here to help you find anything you need from wikipedia."
-  end
-
-  def request_terms
-    puts "Please enter the terms of your search:\n"
-  end
-
-  def invalid_terms
-    puts "Oops, looks like you didn't type anything. Try again!\n"
-  end
-
-  def continue_article
-    puts "\nDo you want to read the whole article? [Y]es or [N]o\n"
-  end
-
-  def invalid_continue
-    puts "That's not a valid input, please select [Y]es or [N]o."
-  end
-
-   def fetch_again
-    puts "\nWhat would you like to do next?
-(type the wanted option 1 or 2)
-1 - Make another search.
-2 - Quit the program.\n"
-  end
-
-  def invalid_again
-    puts "That's not a valid input, please try again.
-Select your options by typing 1 or 2.\n"
-  end
-
-  def goodbye
-    puts 'Thanks for using the program! Hope to see you again.'
+def fetch_terms(input)
+  puts @display.request_terms
+  @input = gets.chomp.split
+  while @input.empty?
+    puts @display.invalid_terms
+    fetch_terms(input)
   end
 end
 
-search = Search.new
-search.new_search
+def keep_printing(input)
+  puts @display.continue_article
+  @input = gets.chomp.capitalize
+  case @input
+  when 'Y'
+    px = @nokogiri.css('div.mw-parser-output > p').text
+    fetch_next(input)
+  when 'N'
+    fetch_next(input)
+  else
+    puts @display.invalid_continue
+    keep_printing(input)
+  end
+end
+
+def fetch_next(input)
+  puts @display.fetch_again
+  @input = gets.chomp
+  case @input
+  when '1'
+    run_main
+  when '2'
+    puts @display.goodbye
+  else
+    puts @display.invalid_again
+    fetch_next(input)
+  end
+end
+
+def run_main
+  @display = Display.new
+  fetch_terms(@input)
+  @search = Search.new(@input)
+  @search.browser_new
+  keep_printing(@input)
+end
+
+run_main

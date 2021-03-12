@@ -7,10 +7,9 @@ require 'webdrivers'
 
 class Search
   attr_reader :website
-  attr_accessor :px
+  attr_accessor :title
   def initialize(input)
     @input = input
-    @input = @input.split
     @website = 'https://en.wikipedia.org/wiki/'
     
     @input.each do |term|
@@ -27,7 +26,7 @@ class Search
     @browser.goto(@website)
     @nokogiri = Nokogiri::HTML.parse(@browser.html)
     px = @nokogiri.css('div.mw-parser-output > p').text
-    title = @nokogiri.css('h1#firstHeading').text
-    puts title
+    @title = @nokogiri.css('h1#firstHeading').text
+    puts @title
   end
 end
