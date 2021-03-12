@@ -47,6 +47,7 @@ end
 # Run all the methods
 def run_main
   @display = Display.new
+  puts @display.welcome
   fetch_terms(@input)
   @var = 'div.mw-parser-output > p'
   @search = Search.new(@input, @var)
