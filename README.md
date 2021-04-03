@@ -1,5 +1,14 @@
-
-![](https://img.shields.io/badge/Microverse-blueviolet)
+<p align="center">
+  <a href="https://www.microverse.org/">
+    <img alt="Microverse" src="https://img.shields.io/badge/-Microverse-blueviolet?style=flat-square">
+  </a>
+  <a href="https://github.com/VanessaAoki/Ruby-Capstone/blob/development/LICENSE">
+    <img alt="MIT Licensed" src="https://img.shields.io/github/license/VanessaAoki/Ruby-Capstone?style=flat-square">
+  </a>
+  <a href="https://github.com/VanessaAoki/Ruby-Capstone">
+    <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/VanessaAoki/Ruby-Capstone/development?color=blue&style=flat-square">
+  </a>
+</p>
 
 # Ruby-Capstone
 This is my solo capstone project for the Microverse's Ruby module.
