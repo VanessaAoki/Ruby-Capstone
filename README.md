@@ -14,7 +14,7 @@
 </p>
 
 # Ruby-Capstone
-This is a web-scrapper created with Ruby to help you to get articles from [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) directly from your terminal.
+This is a web-scrapper, created with Ruby, to help you to get articles from [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) - directly from your terminal"
 
 ![screenshot](/images/screenshot.png)
 ![example](/images/example.png)
