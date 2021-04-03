@@ -8,6 +8,9 @@
   <a href="https://github.com/VanessaAoki/Ruby-Capstone">
     <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/VanessaAoki/Ruby-Capstone/development?color=blue&style=flat-square">
   </a>
+  <a href="https://github.com/VanessaAoki/Ruby-Capstone">
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/VanessaAoki/Ruby-Capstone?color=pink&label=%E2%98%85%20stars%20&style=flat-square">
+  </a>
 </p>
 
 # Ruby-Capstone
