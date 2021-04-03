@@ -45,7 +45,7 @@ https://github.com/VanessaAoki/Ruby-Capstone.git
 - Visual Studio, Git & GitHub
 
 
-## Authors
+## Author
 
 👩🏼‍💻 **Vanessa Aoki**
 
